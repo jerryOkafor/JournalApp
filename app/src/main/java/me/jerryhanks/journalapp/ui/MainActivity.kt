@@ -33,11 +33,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun gotoEntries() {
-
         val entriesFragment = EntriesFragment()
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, entriesFragment)
-                .addToBackStack(null)
+                .addToBackStack("entries")
                 .commitAllowingStateLoss()
     }
 
