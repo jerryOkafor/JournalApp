@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.AuthFragment"
-    tools:showIn="@layout/activity_main">
+    tools:context=".ui.auth.AuthFragment">
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
