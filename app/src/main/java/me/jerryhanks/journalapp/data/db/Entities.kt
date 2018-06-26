@@ -3,6 +3,7 @@ package me.jerryhanks.journalapp.data.db
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Index
 import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.TypeConverters
 import java.util.*
 
 
@@ -12,6 +13,7 @@ import java.util.*
  * @for JournalApp
  */
 @Entity(tableName = "diaries", indices = [(Index(value = ["id"], unique = true))])
+@TypeConverters(DateConverter::class)
 data class Diary(
         @PrimaryKey
         val id: Long,
