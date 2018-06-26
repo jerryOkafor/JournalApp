@@ -41,6 +41,9 @@ class EntriesFragment : Fragment() {
 //        button.setOnClickListener {
 //            navUtil.gotoDetails(requireActivity())
 //        }
+        fabCreateDiary.setOnClickListener {
+
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
