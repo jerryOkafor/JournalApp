@@ -17,7 +17,12 @@ import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 object NavigationUtils {
     fun gotoSignIn(activity: FragmentActivity) {
         val signInFragment = SignInFragment()
-        activity.supportFragmentManager.beginTransaction()
+        val supportFragmentManager = activity.supportFragmentManager
+
+        //pop the entries fragment if it exists
+        supportFragmentManager.popBackStackImmediate("entries", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+
+        supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, signInFragment)
                 .addToBackStack("signIn")
                 .commitAllowingStateLoss()

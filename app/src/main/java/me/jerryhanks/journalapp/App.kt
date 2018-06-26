@@ -13,6 +13,8 @@ import org.koin.android.ext.android.startKoin
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        //start koin for di
         startKoin(this, listOf(appModule))
     }
 
