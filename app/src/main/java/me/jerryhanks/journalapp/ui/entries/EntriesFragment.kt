@@ -38,9 +38,9 @@ class EntriesFragment : Fragment() {
         appCompatActivity.setSupportActionBar(toolbar)
         appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        button.setOnClickListener {
-            navUtil.gotoDetails(requireActivity())
-        }
+//        button.setOnClickListener {
+//            navUtil.gotoDetails(requireActivity())
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
