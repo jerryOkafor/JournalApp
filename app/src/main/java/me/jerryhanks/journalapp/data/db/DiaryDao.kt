@@ -1,8 +1,10 @@
 package me.jerryhanks.journalapp.data.db
 
+import android.arch.paging.DataSource
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
+import android.arch.persistence.room.Update
 
 
 /**
@@ -17,7 +19,13 @@ interface DiaryDao {
     @Insert
     fun insertDiary(diary: Diary)
 
-//    @Query("SELECT * FROM diaries ORDER BY date ASC")
-//    fun diariesByDate(): DataSorce.Factory<Int, Diary>()
+    @Update
+    fun updateDiary(diary: Diary)
+
+    @Query("SELECT * FROM diaries WHERE id = :id")
+    fun getDiaryById(id: Long)
+
+    @Query("SELECT * FROM diaries ORDER BY date ASC")
+    fun diariesByDate(): DataSource.Factory<Int, Diary>
 
 }
