@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import kotlinx.android.synthetic.main.fragment_details.*
 
 import me.jerryhanks.journalapp.R
+import org.koin.android.ext.android.inject
 
 private const val EXTRA_DIARY_ID = "diary_id"
 
@@ -36,22 +38,6 @@ class DetailsFragment : Fragment() {
         appCompatActivity.setSupportActionBar(toolbar)
         appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
-
-
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is OnFragmentInteractionListener) {
-//            listener = context
-//        } else {
-//            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-//        }
-//    }
-//
-//    override fun onDetach() {
-//        super.onDetach()
-//        listener = null
-//    }
-//
 
     companion object {
         @JvmStatic
