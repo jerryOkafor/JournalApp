@@ -3,9 +3,10 @@
 buildscript {
     ext.kotlin_version = '1.2.50'
     ext.versions = [
-            'koin': '0.9.3',
-            'lifecycle':'1.1.1',
-            'room':'1.1.1'
+            'koin'     : '0.9.3',
+            'lifecycle': '1.1.1',
+            'room'     : '1.1.1',
+            'paging'   : '1.0.0'
     ]
     repositories {
         google()
