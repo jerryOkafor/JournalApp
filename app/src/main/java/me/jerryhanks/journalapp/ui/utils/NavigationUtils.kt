@@ -16,14 +16,19 @@ object NavigationUtils {
     fun gotoSignIn(activity: FragmentActivity) {
         val signInFragment = AuthFragment()
         activity.supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, signInFragment)
+                .add(R.id.fragmentContainer, signInFragment)
                 .commitAllowingStateLoss()
 
     }
 
     fun gotoEntries(activity: FragmentActivity) {
         val entriesFragment = EntriesFragment()
-        activity.supportFragmentManager.beginTransaction()
+        val supportFragmentManager = activity.supportFragmentManager
+
+        //pop the signIn Fragment
+        supportFragmentManager.popBackStackImmediate()
+
+        supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, entriesFragment)
                 .addToBackStack("entries")
                 .commitAllowingStateLoss()
