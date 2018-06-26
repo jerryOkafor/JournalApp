@@ -1,4 +1,4 @@
-package me.jerryhanks.journalapp.ui.auth
+package me.jerryhanks.journalapp.ui.signIn
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import kotlinx.android.synthetic.main.fragment_auth.*
+import kotlinx.android.synthetic.main.fragment_sign_in.*
 import me.jerryhanks.journalapp.R
 import android.content.Intent
 import android.support.design.widget.Snackbar
-import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
@@ -23,7 +22,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import me.jerryhanks.journalapp.ui.entries.EntriesFragment
 
 
-class AuthFragment : Fragment() {
+class SignInFragment : Fragment() {
 
     private val googleSignInOptions by lazy {
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -44,7 +43,7 @@ class AuthFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_auth, container, false)
+        return inflater.inflate(R.layout.fragment_sign_in, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -126,6 +125,6 @@ class AuthFragment : Fragment() {
 
     companion object {
         const val RC_SIGN_IN = 1234
-        const val TAG = "AuthFragment"
+        const val TAG = "SignInFragment"
     }
 }

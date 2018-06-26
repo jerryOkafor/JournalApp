@@ -2,7 +2,7 @@ package me.jerryhanks.journalapp.ui.utils
 
 import android.support.v4.app.FragmentActivity
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.ui.auth.AuthFragment
+import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 import me.jerryhanks.journalapp.ui.entries.EntriesFragment
 
 
@@ -14,7 +14,7 @@ import me.jerryhanks.journalapp.ui.entries.EntriesFragment
 
 object NavigationUtils {
     fun gotoSignIn(activity: FragmentActivity) {
-        val signInFragment = AuthFragment()
+        val signInFragment = SignInFragment()
         activity.supportFragmentManager.beginTransaction()
                 .add(R.id.fragmentContainer, signInFragment)
                 .commitAllowingStateLoss()

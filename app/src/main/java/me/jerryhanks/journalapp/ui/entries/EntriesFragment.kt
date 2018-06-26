@@ -3,13 +3,12 @@ package me.jerryhanks.journalapp.ui.entries
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
 import android.view.*
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_entires.*
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.ui.auth.AuthFragment
+import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 import me.jerryhanks.journalapp.ui.entrydetails.DetailsFragment
 
 class EntriesFragment : Fragment() {
@@ -84,7 +83,7 @@ class EntriesFragment : Fragment() {
 
         supportFragmentManager.popBackStackImmediate()
 
-        val signInFragment = AuthFragment()
+        val signInFragment = SignInFragment()
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, signInFragment)
                 .commitAllowingStateLoss()
