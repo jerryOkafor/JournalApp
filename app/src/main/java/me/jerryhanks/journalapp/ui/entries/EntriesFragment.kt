@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_entires.*
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.ui.auth.AuthFragment
+import me.jerryhanks.journalapp.ui.entrydetails.DetailsFragment
 
 class EntriesFragment : Fragment() {
 
@@ -30,6 +31,23 @@ class EntriesFragment : Fragment() {
         val appCompatActivity = requireActivity() as AppCompatActivity
         appCompatActivity.setSupportActionBar(toolbar)
         appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        button.setOnClickListener {
+            gotoDetails()
+        }
+    }
+
+    private fun gotoDetails() {
+        val appCompatActivity = requireActivity() as AppCompatActivity
+        val supportFragmentManager = appCompatActivity.supportFragmentManager
+
+        supportFragmentManager.popBackStackImmediate()
+
+        val detailFragment = DetailsFragment.newInstance("")
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, detailFragment)
+                .commitAllowingStateLoss()
+
     }
 
 
