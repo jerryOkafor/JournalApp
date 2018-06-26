@@ -29,6 +29,10 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:design:28.0.0-alpha3'
 
+    //koin
+    implementation "org.koin:koin-android:$versions.koin"
+    implementation "org.koin:koin-android-architecture:$versions.koin"
+
     //Firebase
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-auth:16.0.2'
