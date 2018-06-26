@@ -12,7 +12,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_entires.*
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.ui.entrydetails.DetailsFragment
 import me.jerryhanks.journalapp.ui.utils.NavigationUtils
 import org.koin.android.ext.android.inject
 
@@ -40,23 +39,9 @@ class EntriesFragment : Fragment() {
         appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         button.setOnClickListener {
-            gotoDetails()
+            navUtil.gotoDetails(requireActivity())
         }
     }
-
-    private fun gotoDetails() {
-        val appCompatActivity = requireActivity() as AppCompatActivity
-        val supportFragmentManager = appCompatActivity.supportFragmentManager
-
-        supportFragmentManager.popBackStackImmediate()
-
-        val detailFragment = DetailsFragment.newInstance("")
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, detailFragment)
-                .commitAllowingStateLoss()
-
-    }
-
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater?.inflate(R.menu.menu_entries, menu)

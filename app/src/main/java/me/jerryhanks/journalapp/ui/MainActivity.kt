@@ -18,11 +18,19 @@ class MainActivity : AppCompatActivity() {
         //check if user is logged in or not
         val auth = FirebaseAuth.getInstance()
         if (auth.currentUser != null) {
-            navUtil.gotoSignIn(this)
-        } else {
             navUtil.gotoEntries(this)
+        } else {
+            navUtil.gotoSignIn(this)
         }
 
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount <= 1) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
     }
 
 }

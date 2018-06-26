@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.ui.entries.EntriesFragment
+import me.jerryhanks.journalapp.ui.utils.NavigationUtils
 import org.koin.android.ext.android.inject
 
 
@@ -28,6 +27,7 @@ class SignInFragment : Fragment() {
         FirebaseAuth.getInstance()
     }
     private val googleSignInClient: GoogleSignInClient by inject()
+    private val navUtil: NavigationUtils by inject()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -87,7 +87,7 @@ class SignInFragment : Fragment() {
                         Toast.makeText(requireContext(), "SignIn  Successful.", Toast.LENGTH_LONG).show()
 
                         //got to entries page
-                        gotoEntries()
+                        navUtil.gotoEntries(requireActivity())
 
                     } else {
                         //sign in unSuccessful
@@ -97,20 +97,6 @@ class SignInFragment : Fragment() {
                 }
 
     }
-
-    private fun gotoEntries() {
-        val appCompactActivity = requireActivity() as AppCompatActivity
-        val entriesFragment = EntriesFragment()
-        val supportFragmentManager = appCompactActivity.supportFragmentManager
-
-        supportFragmentManager.popBackStackImmediate()
-
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, entriesFragment)
-                .addToBackStack(null)
-                .commitAllowingStateLoss()
-    }
-
 
     companion object {
         const val RC_SIGN_IN = 1234

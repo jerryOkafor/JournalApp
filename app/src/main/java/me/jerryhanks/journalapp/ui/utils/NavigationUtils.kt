@@ -1,9 +1,11 @@
 package me.jerryhanks.journalapp.ui.utils
 
 import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 import me.jerryhanks.journalapp.ui.entries.EntriesFragment
+import me.jerryhanks.journalapp.ui.entrydetails.DetailsFragment
+import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 
 
 /**
@@ -16,7 +18,8 @@ object NavigationUtils {
     fun gotoSignIn(activity: FragmentActivity) {
         val signInFragment = SignInFragment()
         activity.supportFragmentManager.beginTransaction()
-                .add(R.id.fragmentContainer, signInFragment)
+                .replace(R.id.fragmentContainer, signInFragment)
+                .addToBackStack("signIn")
                 .commitAllowingStateLoss()
 
     }
@@ -26,11 +29,23 @@ object NavigationUtils {
         val supportFragmentManager = activity.supportFragmentManager
 
         //pop the signIn Fragment
-        supportFragmentManager.popBackStackImmediate()
+        supportFragmentManager.popBackStackImmediate("signIn", FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, entriesFragment)
                 .addToBackStack("entries")
                 .commitAllowingStateLoss()
     }
+
+    fun gotoDetails(activity: FragmentActivity) {
+        val supportFragmentManager = activity.supportFragmentManager
+
+        val detailFragment = DetailsFragment.newInstance("")
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, detailFragment)
+                .addToBackStack("details")
+                .commitAllowingStateLoss()
+
+    }
+
 }
