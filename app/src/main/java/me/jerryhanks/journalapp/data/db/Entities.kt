@@ -13,7 +13,6 @@ import java.util.*
  * @for JournalApp
  */
 @Entity(tableName = "diaries", indices = [(Index(value = ["id"], unique = true))])
-@TypeConverters(DateConverter::class)
 data class Diary(
         @PrimaryKey
         val id: Long,

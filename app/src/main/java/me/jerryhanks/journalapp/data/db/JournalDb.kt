@@ -3,6 +3,7 @@ package me.jerryhanks.journalapp.data.db
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.TypeConverters
 import android.content.Context
 
 
@@ -13,6 +14,7 @@ import android.content.Context
  */
 
 @Database(entities = [(Diary::class)], version = 1, exportSchema = true)
+@TypeConverters(DateConverter::class)
 abstract class JournalDb : RoomDatabase() {
 
     abstract fun diaries(): DiaryDao
