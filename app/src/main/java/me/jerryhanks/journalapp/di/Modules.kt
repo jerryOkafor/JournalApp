@@ -2,9 +2,11 @@ package me.jerryhanks.journalapp.di
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import me.jerryhanks.journalapp.AppExecutors
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.Repository
+import me.jerryhanks.journalapp.data.db.JournalDb
 import me.jerryhanks.journalapp.ui.utils.NavigationUtils
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.Module
@@ -18,8 +20,10 @@ import org.koin.dsl.module.applicationContext
  */
 
 
+/**
+ * App Module definitions
+ * */
 val appModule: Module = applicationContext {
-    bean { Repository() as DataSource }
     bean { NavigationUtils }
     bean {
         GoogleSignIn.getClient(androidApplication(),
@@ -28,4 +32,14 @@ val appModule: Module = applicationContext {
                         .requestEmail()
                         .build())
     }
+    bean { AppExecutors() }
+    bean { JournalDb.create(androidApplication(), false) }
+    bean { Repository(get(), get()) as DataSource }
+}
+
+/**
+ * In - Memory Room database definition for testing
+ * */
+val roomTestModule: Module = applicationContext {
+    bean { JournalDb.create(androidApplication(), true) }
 }

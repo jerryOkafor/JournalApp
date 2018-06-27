@@ -1,5 +1,8 @@
 package me.jerryhanks.journalapp.data
 
+import me.jerryhanks.journalapp.AppExecutors
+import me.jerryhanks.journalapp.data.db.JournalDb
+
 
 /**
  * @author Po10cio on 26/06/2018
@@ -7,6 +10,7 @@ package me.jerryhanks.journalapp.data
  * @for JournalApp
  */
 
-class Repository : DataSource {
+class Repository(val roomDb: JournalDb,
+                 val appExecutors: AppExecutors) : DataSource {
 
 }

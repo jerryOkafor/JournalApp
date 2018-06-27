@@ -23,6 +23,7 @@ abstract class JournalDb : RoomDatabase() {
         fun create(context: Context, usInMemory: Boolean): JournalDb {
             val dbBuilder = if (usInMemory) {
                 Room.inMemoryDatabaseBuilder(context, JournalDb::class.java)
+                        .allowMainThreadQueries()
             } else {
                 Room.databaseBuilder(context, JournalDb::class.java, "journalDb")
             }
