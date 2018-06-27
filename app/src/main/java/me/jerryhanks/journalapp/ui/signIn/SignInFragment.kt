@@ -75,11 +75,12 @@ class SignInFragment : Fragment() {
     private fun firebaseAuthWithGoogleAccount(account: GoogleSignInAccount?) {
         Log.d(TAG, "firebaseAuthWithGoogle: ${account?.id}")
 
-        //Todo show progress here
+        progressBar.visibility = View.VISIBLE
 
         val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(requireActivity()) {
+                    progressBar.visibility = View.INVISIBLE
                     if (it.isSuccessful) {
                         //sign in successful
                         Log.d(TAG, "signInWithCredentials: Successful")
