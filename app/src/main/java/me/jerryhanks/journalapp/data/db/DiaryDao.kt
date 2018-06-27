@@ -1,5 +1,6 @@
 package me.jerryhanks.journalapp.data.db
 
+import android.arch.lifecycle.LiveData
 import android.arch.paging.DataSource
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
@@ -23,7 +24,7 @@ interface DiaryDao {
     fun updateDiary(diary: Diary)
 
     @Query("SELECT * FROM diaries WHERE id = :id")
-    fun getDiaryById(id: Long)
+    fun getDiaryById(id: Long): LiveData<Diary>
 
     @Query("SELECT * FROM diaries ORDER BY date ASC")
     fun diariesByDate(): DataSource.Factory<Int, Diary>

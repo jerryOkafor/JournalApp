@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -13,6 +15,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+            }
+        }
     }
     buildTypes {
         release {
@@ -34,7 +42,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$versions.lifecycle"
     implementation "android.arch.lifecycle:common-java8:$versions.lifecycle"
 
-    //pagin
+    //paging
     implementation "android.arch.paging:runtime:$versions.paging"
 
     //room
