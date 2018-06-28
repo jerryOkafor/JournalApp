@@ -7,4 +7,5 @@
     <string name="hint_content">Enter Note content here</string>
     <string name="action_update">Update</string>
     <string name="create_or_add_dairy_title">Create or Add a Note</string>
+    <string name="action_delete_note">Delete note</string>
 </resources>
