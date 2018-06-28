@@ -39,7 +39,6 @@ object NavigationUtils {
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, entriesFragment)
-                .addToBackStack("entries")
                 .commitAllowingStateLoss()
     }
 

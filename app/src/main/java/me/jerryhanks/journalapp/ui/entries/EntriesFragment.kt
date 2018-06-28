@@ -36,7 +36,6 @@ class EntriesFragment : Fragment() {
 
         val appCompatActivity = requireActivity() as AppCompatActivity
         appCompatActivity.setSupportActionBar(toolbar)
-        appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 //        button.setOnClickListener {
 //            navUtil.gotoDetails(requireActivity())
