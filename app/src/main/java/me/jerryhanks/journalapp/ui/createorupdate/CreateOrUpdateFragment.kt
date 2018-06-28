@@ -20,7 +20,7 @@ private const val EXTRA_DIARY_ID = "diary_id"
 private const val TAG = "CreateOrUpdate"
 
 class ModifyFragment : Fragment() {
-    private var diaryId: Long = -1L
+    private var diaryId: Long = 0L
     private var note: Diary? = null
 
     private val viewModel by viewModel<CreateOrUpdateViewModel>()
@@ -108,11 +108,11 @@ class ModifyFragment : Fragment() {
         //if we are here, title and content are ot null
         //ns we are ready to go
         val newDiary = note?.copy(title = title, content = content, updateAt = Date())
-                ?: Diary(null, title, content, Date(), Date())
+                ?: Diary(diaryId, title, content, Date(), Date())
 
         //update or create the note
         viewModel.createOrUpdateNote(newDiary)
-        showToastMessage(if (diaryId == -1L) "Note added successfully." else "Note Updated successfully")
+        showToastMessage(if (diaryId == 0L) "Note added successfully." else "Note Updated successfully")
 
         requireActivity().supportFragmentManager.popBackStack()
 
