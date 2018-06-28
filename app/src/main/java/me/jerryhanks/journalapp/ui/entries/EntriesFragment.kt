@@ -42,7 +42,8 @@ class EntriesFragment : Fragment() {
 //            navUtil.gotoDetails(requireActivity())
 //        }
         fabCreateDiary.setOnClickListener {
-
+            //create a new Diary item
+            navUtil.gotoCreateOrUpdate(requireActivity(), -1)
         }
     }
 

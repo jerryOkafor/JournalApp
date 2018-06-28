@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.ui.entries.EntriesFragment
 import me.jerryhanks.journalapp.ui.entrydetails.DetailsFragment
+import me.jerryhanks.journalapp.ui.modify.ModifyFragment
 import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 
 
@@ -49,6 +50,17 @@ object NavigationUtils {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, detailFragment)
                 .addToBackStack("details")
+                .commitAllowingStateLoss()
+
+    }
+
+    fun gotoCreateOrUpdate(activity: FragmentActivity, diaryId: Long) {
+        val createOrUpdateFragment = ModifyFragment.newInstance(diaryId)
+
+        val supportFragmentManager = activity.supportFragmentManager
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, createOrUpdateFragment)
+                .addToBackStack("createOrUpdate")
                 .commitAllowingStateLoss()
 
     }

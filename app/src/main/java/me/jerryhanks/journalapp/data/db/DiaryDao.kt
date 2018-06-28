@@ -2,10 +2,7 @@ package me.jerryhanks.journalapp.data.db
 
 import android.arch.lifecycle.LiveData
 import android.arch.paging.DataSource
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
-import android.arch.persistence.room.Update
+import android.arch.persistence.room.*
 
 
 /**
@@ -17,11 +14,8 @@ import android.arch.persistence.room.Update
 @Dao
 interface DiaryDao {
 
-    @Insert
-    fun insertDiary(diary: Diary)
-
-    @Update
-    fun updateDiary(diary: Diary)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOrUpdateDiary(diary: Diary)
 
     @Query("SELECT * FROM diaries WHERE id = :id")
     fun getDiaryById(id: Long): LiveData<Diary>

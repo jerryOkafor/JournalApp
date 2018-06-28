@@ -5,4 +5,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_add">Add</string>
+    <string name="hint_diary_title">Enter diary title here</string>
+    <string name="hint_content">Enter content here</string>
 </resources>

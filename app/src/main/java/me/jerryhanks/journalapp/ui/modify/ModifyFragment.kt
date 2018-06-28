@@ -3,13 +3,15 @@ package me.jerryhanks.journalapp.ui.modify
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.view.*
+import kotlinx.android.synthetic.main.fragment_modify.*
 
 import me.jerryhanks.journalapp.R
 
 private const val EXTRA_DIARY_ID = "diary_id"
+private const val TAG = "CreateOrUpdate"
 
 class ModifyFragment : Fragment() {
     private var diaryId: Long? = null
@@ -19,6 +21,8 @@ class ModifyFragment : Fragment() {
         arguments?.let {
             diaryId = it.getLong(EXTRA_DIARY_ID)
         }
+
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +31,40 @@ class ModifyFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_modify, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val appCompactActivity = requireActivity() as AppCompatActivity
+        appCompactActivity.setSupportActionBar(toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        return inflater.inflate(R.menu.menu_modify_diary, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.action_modify -> {
+                createOrUpdateDiary()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    private fun createOrUpdateDiary() {
+        Log.d(TAG, "Inserting or updating diary")
+
+    }
+
 
     companion object {
         @JvmStatic
-        fun newInstance(diaryId: String) =
+        fun newInstance(diaryId: Long) =
                 ModifyFragment().apply {
                     arguments = Bundle().apply {
-                        putString(EXTRA_DIARY_ID, diaryId)
+                        putLong(EXTRA_DIARY_ID, diaryId)
                     }
                 }
     }

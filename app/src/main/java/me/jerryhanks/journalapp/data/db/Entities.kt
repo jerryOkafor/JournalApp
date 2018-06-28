@@ -14,7 +14,7 @@ import java.util.*
  */
 @Entity(tableName = "diaries", indices = [(Index(value = ["id"], unique = true))])
 data class Diary(
-        @PrimaryKey
+        @PrimaryKey(autoGenerate = true)
         val id: Long,
         val title: String,
         val content: String,
