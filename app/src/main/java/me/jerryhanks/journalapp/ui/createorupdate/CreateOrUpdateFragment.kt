@@ -10,9 +10,9 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_modify.*
-
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.ui.utils.Util
 import org.koin.android.architecture.ext.viewModel
 import java.util.*
 
@@ -113,6 +113,7 @@ class ModifyFragment : Fragment() {
         //update or create the note
         viewModel.createOrUpdateNote(newDiary)
         showToastMessage(if (diaryId == 0L) "Note added successfully." else "Note Updated successfully")
+        Util.closeSofteInputMethod(requireActivity())
 
         requireActivity().supportFragmentManager.popBackStack()
 
