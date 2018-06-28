@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_modify.*
 
 import me.jerryhanks.journalapp.R
@@ -74,6 +75,10 @@ class ModifyFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
+            android.R.id.home -> {
+                requireActivity().supportFragmentManager.popBackStack()
+                true
+            }
             R.id.action_create_or_update -> {
                 createOrUpdateDiary()
                 true
@@ -107,8 +112,14 @@ class ModifyFragment : Fragment() {
 
         //update or create the note
         viewModel.createOrUpdateNote(newDiary)
-        showMessage(if (diaryId == -1L) "Note added successfully." else "Note Updated successfully")
+        showToastMessage(if (diaryId == -1L) "Note added successfully." else "Note Updated successfully")
 
+        requireActivity().supportFragmentManager.popBackStack()
+
+    }
+
+    private fun showToastMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
     private fun showMessage(error: String) {

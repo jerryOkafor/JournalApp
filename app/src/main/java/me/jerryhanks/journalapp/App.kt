@@ -1,6 +1,7 @@
 package me.jerryhanks.journalapp
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import me.jerryhanks.journalapp.di.appModule
 import org.koin.android.ext.android.startKoin
 
@@ -14,6 +15,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        Stetho.initializeWithDefaults(this)
         //start koin for di
         startKoin(this, listOf(appModule))
     }
