@@ -37,11 +37,8 @@ class EntriesFragment : Fragment() {
         val appCompatActivity = requireActivity() as AppCompatActivity
         appCompatActivity.setSupportActionBar(toolbar)
 
-//        button.setOnClickListener {
-//            navUtil.gotoDetails(requireActivity())
-//        }
         fabCreateDiary.setOnClickListener {
-            //create a new Diary item
+            //create a new note
             navUtil.gotoCreateOrUpdate(requireActivity(), 0L)
         }
     }
