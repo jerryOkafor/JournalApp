@@ -9,4 +9,5 @@
     <string name="hint_diary_title">Enter diary title here</string>
     <string name="hint_content">Enter content here</string>
     <string name="action_update">Update</string>
+    <string name="creat_or_add_dairy_title">Create or Add diary</string>
 </resources>

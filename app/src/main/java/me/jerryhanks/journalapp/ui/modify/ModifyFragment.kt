@@ -35,6 +35,12 @@ class ModifyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val appCompactActivity = requireActivity() as AppCompatActivity
         appCompactActivity.setSupportActionBar(toolbar)
+        appCompactActivity.supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_close)
+            title = getString(R.string.creat_or_add_dairy_title)
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
