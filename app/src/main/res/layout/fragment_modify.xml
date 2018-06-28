@@ -6,7 +6,7 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.modify.ModifyFragment">
+    tools:context=".ui.createorupdate.ModifyFragment">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

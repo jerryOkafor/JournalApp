@@ -1,4 +1,4 @@
-package me.jerryhanks.journalapp.ui.modify
+package me.jerryhanks.journalapp.ui.createorupdate
 
 
 import android.arch.lifecycle.Observer
