@@ -46,7 +46,7 @@ class DetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             R.id.action_modify -> {
-                modifyDiaryItem()
+                updateNote()
                 true
             }
             else -> {
@@ -55,7 +55,7 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    private fun modifyDiaryItem() {
+    private fun updateNote() {
         Log.d(TAG, "Modifying Diary Item")
 
     }

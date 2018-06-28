@@ -108,7 +108,7 @@ class ModifyFragment : Fragment() {
         //if we are here, title and content are ot null
         //ns we are ready to go
         val newDiary = note?.copy(title = title, content = content, updateAt = Date())
-                ?: Diary(diaryId, title, content, Date(), Date())
+                ?: Diary(null, title, content, Date(), Date())
 
         //update or create the note
         viewModel.createOrUpdateNote(newDiary)
