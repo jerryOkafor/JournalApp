@@ -24,4 +24,8 @@ class Repository(private val roomDb: JournalDb,
         return roomDb.diaries().getDiaryById(noteId)
     }
 
+    override fun getAllNotes(): android.arch.paging.DataSource.Factory<Int, Diary> {
+        return roomDb.diaries().diariesByDate()
+    }
+
 }

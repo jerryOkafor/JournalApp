@@ -8,6 +8,7 @@ import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.Repository
 import me.jerryhanks.journalapp.data.db.JournalDb
 import me.jerryhanks.journalapp.ui.createorupdate.CreateOrUpdateViewModel
+import me.jerryhanks.journalapp.ui.entries.EntriesViewModel
 import me.jerryhanks.journalapp.ui.utils.NavigationUtils
 import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.koin.androidApplication
@@ -40,6 +41,7 @@ val appModule: Module = applicationContext {
 
     //viewModels
     viewModel { CreateOrUpdateViewModel(get()) }
+    viewModel { EntriesViewModel(get()) }
 }
 
 /**

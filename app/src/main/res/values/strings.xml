@@ -13,4 +13,5 @@
         ConstraintLayout and RecyclerView. No drawing, just plug in and play. And this can only
         ConstraintLayout and RecyclerView. No drawing, just plug in and play. And this can only
         take 5 liens on the view holder, once it is more than 5 lines, it is truncated from the left hand side.</string>
+    <string name="no_notes_available">No Notes yet, click the + icon to add notes</string>
 </resources>
