@@ -20,7 +20,7 @@ interface DiaryDao {
     @Query("SELECT * FROM diaries WHERE id = :id")
     fun getDiaryById(id: Long): LiveData<Diary>
 
-    @Query("SELECT * FROM diaries ORDER BY date ASC")
+    @Query("SELECT * FROM diaries ORDER BY createdAt ASC")
     fun diariesByDate(): DataSource.Factory<Int, Diary>
 
 }

@@ -7,7 +7,9 @@ import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.Repository
 import me.jerryhanks.journalapp.data.db.JournalDb
+import me.jerryhanks.journalapp.ui.modify.CreateOrUpdateViewModel
 import me.jerryhanks.journalapp.ui.utils.NavigationUtils
+import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.Module
 import org.koin.dsl.module.applicationContext
@@ -35,6 +37,9 @@ val appModule: Module = applicationContext {
     bean { AppExecutors() }
     bean { JournalDb.create(androidApplication(), false) }
     bean { Repository(get(), get()) as DataSource }
+
+    //viewModels
+    viewModel { CreateOrUpdateViewModel(get()) }
 }
 
 /**

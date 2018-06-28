@@ -1,6 +1,8 @@
 package me.jerryhanks.journalapp.data
 
+import android.arch.lifecycle.LiveData
 import me.jerryhanks.journalapp.AppExecutors
+import me.jerryhanks.journalapp.data.db.Diary
 import me.jerryhanks.journalapp.data.db.JournalDb
 
 
@@ -10,7 +12,16 @@ import me.jerryhanks.journalapp.data.db.JournalDb
  * @for JournalApp
  */
 
-class Repository(val roomDb: JournalDb,
-                 val appExecutors: AppExecutors) : DataSource {
+class Repository(private val roomDb: JournalDb,
+                 private val appExecutors: AppExecutors) : DataSource {
+    override fun createOrUpdateNote(note: Diary) {
+        appExecutors.diskIO().execute {
+            roomDb.diaries().insertOrUpdateDiary(note)
+        }
+    }
+
+    override fun getNoteById(noteId: Long): LiveData<Diary> {
+        return roomDb.diaries().getDiaryById(noteId)
+    }
 
 }

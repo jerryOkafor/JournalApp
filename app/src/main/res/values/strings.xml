@@ -2,12 +2,9 @@
     <string name="app_name">ALC 3.0 Journal</string>
     <string name="action_settings">Settings</string>
     <string name="sign_in_to_continue">Sign in to continue</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_add">Add</string>
-    <string name="hint_diary_title">Enter diary title here</string>
-    <string name="hint_content">Enter content here</string>
+    <string name="hint_title">Enter Note title here</string>
+    <string name="hint_content">Enter Note content here</string>
     <string name="action_update">Update</string>
-    <string name="creat_or_add_dairy_title">Create or Add diary</string>
+    <string name="create_or_add_dairy_title">Create or Add a Note</string>
 </resources>

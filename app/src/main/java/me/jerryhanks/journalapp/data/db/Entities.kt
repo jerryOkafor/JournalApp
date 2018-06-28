@@ -18,4 +18,5 @@ data class Diary(
         val id: Long,
         val title: String,
         val content: String,
-        val date: Date)
+        val createdAt: Date,
+        val updateAt: Date)
