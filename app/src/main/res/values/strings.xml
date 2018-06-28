@@ -8,4 +8,9 @@
     <string name="action_update">Update</string>
     <string name="create_or_add_dairy_title">Create or Add a Note</string>
     <string name="action_delete_note">Delete note</string>
+    <string name="sample_note">A simple Timeline View that demonstrates the power of
+        ConstraintLayout and RecyclerView. No drawing, just plug in and play. And this can only
+        ConstraintLayout and RecyclerView. No drawing, just plug in and play. And this can only
+        ConstraintLayout and RecyclerView. No drawing, just plug in and play. And this can only
+        take 5 liens on the view holder, once it is more than 5 lines, it is truncated from the left hand side.</string>
 </resources>
