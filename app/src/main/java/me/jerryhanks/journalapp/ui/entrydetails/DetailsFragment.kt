@@ -3,16 +3,14 @@ package me.jerryhanks.journalapp.ui.entrydetails
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import android.util.Log
+import android.view.*
 import kotlinx.android.synthetic.main.fragment_details.*
 
 import me.jerryhanks.journalapp.R
-import org.koin.android.ext.android.inject
 
 private const val EXTRA_DIARY_ID = "diary_id"
+private const val TAG = "DetailsFragment"
 
 class DetailsFragment : Fragment() {
 
@@ -23,6 +21,8 @@ class DetailsFragment : Fragment() {
         arguments?.let {
             diaryId = it.getString(EXTRA_DIARY_ID)
         }
+
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +37,27 @@ class DetailsFragment : Fragment() {
         val appCompatActivity = requireActivity() as AppCompatActivity
         appCompatActivity.setSupportActionBar(toolbar)
         appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_diary_deatails, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.action_modify -> {
+                modifyDiaryItem()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    private fun modifyDiaryItem() {
+        Log.d(TAG, "Modifying Diary Item")
+
     }
 
     companion object {
