@@ -70,6 +70,9 @@ dependencies {
     //goggle play services auth
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
 
+    //stetho
+    implementation "com.facebook.stetho:stetho:$versions.stetho"
+
     testCompile 'org.jetbrains.kotlin:kotlin-test-junit:1.2.50'
     testCompile "com.nhaarman:mockito-kotlin:1.6.0"
     testCompile 'org.amshove.kluent:kluent:1.15'
