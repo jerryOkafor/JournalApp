@@ -16,7 +16,7 @@ import me.jerryhanks.journalapp.data.db.Diary
  * @mail jerryhanksokafor@gmail.com
  * @for JournalApp
  */
-class NotesAdapter(val clickListener: NotesClickCallback) : PagedListAdapter<Diary, NotesAdapter.NotesViewHolder>(DIFF_CALLBACK) {
+class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAdapter<Diary, NotesAdapter.NotesViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         val rootView = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
         return NotesViewHolder(rootView)
@@ -43,6 +43,7 @@ class NotesAdapter(val clickListener: NotesClickCallback) : PagedListAdapter<Dia
     inner class NotesViewHolder(override val containerView: View)
         : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bindNote(item: Diary) {
+
 
         }
 
