@@ -43,10 +43,10 @@ object NavigationUtils {
                 .commitAllowingStateLoss()
     }
 
-    fun gotoDetails(activity: FragmentActivity) {
+    fun gotoDetails(activity: FragmentActivity, id: Long) {
         val supportFragmentManager = activity.supportFragmentManager
 
-        val detailFragment = DetailsFragment.newInstance("")
+        val detailFragment = DetailsFragment.newInstance(id)
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, detailFragment)
                 .addToBackStack("details")

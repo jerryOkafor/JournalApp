@@ -14,15 +14,20 @@ private const val TAG = "DetailsFragment"
 
 class DetailsFragment : Fragment() {
 
-    private var diaryId: String? = null
+    private var noteId: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            diaryId = it.getString(EXTRA_DIARY_ID)
+            noteId = it.getLong(EXTRA_DIARY_ID)
         }
 
         setHasOptionsMenu(true)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -62,10 +67,10 @@ class DetailsFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(diaryId: String) =
+        fun newInstance(noteId: Long) =
                 DetailsFragment().apply {
                     arguments = Bundle().apply {
-                        putString(EXTRA_DIARY_ID, diaryId)
+                        putLong(EXTRA_DIARY_ID, noteId)
                     }
                 }
     }

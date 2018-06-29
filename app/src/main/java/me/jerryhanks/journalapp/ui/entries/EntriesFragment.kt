@@ -28,6 +28,7 @@ class EntriesFragment : Fragment() {
     private val notesItemClick = object : NotesAdapter.NotesClickCallback {
         override fun onItemClicked(diary: Diary) {
             Log.d(TAG, "Item selected: $diary")
+            navUtil.gotoDetails(requireActivity(), diary.id)
         }
     }
 
