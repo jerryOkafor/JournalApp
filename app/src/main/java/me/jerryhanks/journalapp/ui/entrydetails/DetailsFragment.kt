@@ -10,9 +10,10 @@ import kotlinx.android.synthetic.main.fragment_details.*
 
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.ui.utils.goBack
+import me.jerryhanks.journalapp.ui.utils.toFormattedString
 import org.koin.android.architecture.ext.viewModel
 
-private const val EXTRA_DIARY_ID = "diary_id"
+private const val EXTRA_DIARY_ID = "note_id"
 private const val TAG = "DetailsFragment"
 
 class DetailsFragment : Fragment() {
@@ -36,6 +37,12 @@ class DetailsFragment : Fragment() {
         //start observing note
         detailsViewModel.getNote().observe(this, Observer {
             Log.d(TAG, "Note: $it")
+            it?.let {
+                tvNoteTitle.text = it.title
+                tvNoteContent.text = it.content
+                tvCreatedAt.text = getString(R.string.format_created_at, it.createdAt.toFormattedString())
+                tvUpdatedAt.text = getString(R.string.format_updated_at, it.updateAt.toFormattedString())
+            }
         })
 
     }
