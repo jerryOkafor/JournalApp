@@ -45,10 +45,11 @@ class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAda
     inner class NotesViewHolder(override val containerView: View)
         : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bindNote(note: Diary) {
+            val context = containerView.context
             tvNoteTitle.text = note.title
             tvNoteContent.text = note.content
-            tvCreatedAt.text = note.createdAt.toFormatedString()
-            tvUpdatedAt.text = note.updateAt.toFormatedString()
+            tvCreatedAt.text = context.getString(R.string.format_created_at, note.createdAt.toFormatedString())
+            tvUpdatedAt.text = context.getString(R.string.format_updated_at, note.updateAt.toFormatedString())
 
 
         }
