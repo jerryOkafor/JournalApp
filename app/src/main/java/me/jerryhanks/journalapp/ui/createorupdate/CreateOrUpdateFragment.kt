@@ -113,7 +113,7 @@ class ModifyFragment : Fragment() {
         //update or create the note
         viewModel.createOrUpdateNote(newDiary)
         showToastMessage(if (diaryId == 0L) "Note added successfully." else "Note Updated successfully")
-        Util.closeSofteInputMethod(requireActivity())
+        Util.closeSoftInputMethod(requireActivity())
 
         requireActivity().supportFragmentManager.popBackStack()
 

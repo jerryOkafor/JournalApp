@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_note.*
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.ui.utils.toFormatedString
 
 
 /**
@@ -42,7 +44,11 @@ class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAda
 
     inner class NotesViewHolder(override val containerView: View)
         : RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bindNote(item: Diary) {
+        fun bindNote(note: Diary) {
+            tvNoteTitle.text = note.title
+            tvNoteContent.text = note.content
+            tvCreatedAt.text = note.createdAt.toFormatedString()
+            tvUpdatedAt.text = note.updateAt.toFormatedString()
 
 
         }

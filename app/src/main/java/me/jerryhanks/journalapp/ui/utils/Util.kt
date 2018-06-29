@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager
  * @for JournalApp
  */
 object Util {
-    fun closeSofteInputMethod(activity: Activity) {
+    fun closeSoftInputMethod(activity: Activity) {
         val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         var view = activity.currentFocus
         if (view == null) {
