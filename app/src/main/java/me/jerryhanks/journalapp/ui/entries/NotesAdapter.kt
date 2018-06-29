@@ -10,7 +10,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_note.*
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.data.db.Diary
-import me.jerryhanks.journalapp.ui.utils.toFormatedString
+import me.jerryhanks.journalapp.ui.utils.toFormattedString
 
 
 /**
@@ -48,8 +48,8 @@ class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAda
             val context = containerView.context
             tvNoteTitle.text = note.title
             tvNoteContent.text = note.content
-            tvCreatedAt.text = context.getString(R.string.format_created_at, note.createdAt.toFormatedString())
-            tvUpdatedAt.text = context.getString(R.string.format_updated_at, note.updateAt.toFormatedString())
+            tvCreatedAt.text = context.getString(R.string.format_created_at, note.createdAt.toFormattedString())
+            tvUpdatedAt.text = context.getString(R.string.format_updated_at, note.updateAt.toFormattedString())
 
 
         }

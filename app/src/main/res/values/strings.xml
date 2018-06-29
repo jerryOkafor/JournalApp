@@ -16,4 +16,5 @@
     <string name="no_notes_available">No Notes yet, click the + icon to add notes</string>
     <string name="format_created_at">Created : %s</string>
     <string name="format_updated_at">Modified : %s</string>
+    <string name="details_title">Details</string>
 </resources>

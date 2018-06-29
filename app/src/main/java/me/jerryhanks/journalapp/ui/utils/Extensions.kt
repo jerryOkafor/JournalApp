@@ -1,5 +1,6 @@
 package me.jerryhanks.journalapp.ui.utils
 
+import android.support.v4.app.Fragment
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -10,7 +11,11 @@ import java.util.*
  * @for JournalApp
  */
 
-fun Date.toFormatedString(): String {
+fun Date.toFormattedString(): String {
     val simpleDateFormat = SimpleDateFormat.getDateInstance()
     return simpleDateFormat.format(this)
+}
+
+fun Fragment.goBack() {
+    requireActivity().supportFragmentManager.popBackStack()
 }

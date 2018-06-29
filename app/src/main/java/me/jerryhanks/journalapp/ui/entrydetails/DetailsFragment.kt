@@ -1,5 +1,6 @@
 package me.jerryhanks.journalapp.ui.entrydetails
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +9,8 @@ import android.view.*
 import kotlinx.android.synthetic.main.fragment_details.*
 
 import me.jerryhanks.journalapp.R
+import me.jerryhanks.journalapp.ui.utils.goBack
+import org.koin.android.architecture.ext.viewModel
 
 private const val EXTRA_DIARY_ID = "diary_id"
 private const val TAG = "DetailsFragment"
@@ -15,6 +18,7 @@ private const val TAG = "DetailsFragment"
 class DetailsFragment : Fragment() {
 
     private var noteId: Long? = null
+    private val detailsViewModel by viewModel<DetailsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,12 @@ class DetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        detailsViewModel.setNoteId(noteId)
+
+        //start observing note
+        detailsViewModel.getNote().observe(this, Observer {
+            Log.d(TAG, "Note: $it")
+        })
 
     }
 
@@ -41,7 +51,10 @@ class DetailsFragment : Fragment() {
 
         val appCompatActivity = requireActivity() as AppCompatActivity
         appCompatActivity.setSupportActionBar(toolbar)
-        appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        appCompatActivity.supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setTitle(R.string.details_title)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -50,6 +63,10 @@ class DetailsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
+            android.R.id.home -> {
+                goBack()
+                true
+            }
             R.id.action_modify -> {
                 updateNote()
                 true

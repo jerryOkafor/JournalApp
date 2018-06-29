@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_modify.*
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.data.db.Diary
 import me.jerryhanks.journalapp.ui.utils.Util
+import me.jerryhanks.journalapp.ui.utils.goBack
 import org.koin.android.architecture.ext.viewModel
 import java.util.*
 
@@ -76,7 +77,7 @@ class ModifyFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> {
-                requireActivity().supportFragmentManager.popBackStack()
+                goBack()
                 true
             }
             R.id.action_create_or_update -> {
