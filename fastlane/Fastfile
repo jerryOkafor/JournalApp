@@ -69,4 +69,10 @@ platform :android do
       delete_firebase_files: true,
       gcloud_service_key_file: "client-secret.json")
   end
+
+  desc "Generate code report and upload to codcov"
+  lane :generate_code_report do
+    codecov_reorter(
+        token: "7b128fda-650b-4099-a49a-9e960ae4ae05"
+     )
 end

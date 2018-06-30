@@ -135,6 +135,13 @@ jobs:
             path: firebase/
             destination: /firebase/
 
+    ## Generate codecov report
+    generate_code_cove_report:
+      steps:
+        - run:
+            name: Generate report
+            command: bundle exec fastlane generate_code_report
+
 workflows:
   version: 2
   workflow:
@@ -144,4 +151,5 @@ workflows:
        - test_instrumentation:
            requires:
              - test_unit
+       - enerate_code_cove_report:
 
