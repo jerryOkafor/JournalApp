@@ -16,16 +16,16 @@ class Repository(private val roomDb: JournalDb,
                  private val appExecutors: AppExecutors) : DataSource {
     override fun createOrUpdateNote(note: Note) {
         appExecutors.diskIO().execute {
-            roomDb.diaries().insertOrUpdateDiary(note)
+            roomDb.notesDao().insertOrUpdateNote(note)
         }
     }
 
     override fun getNoteById(noteId: Long): LiveData<Note> {
-        return roomDb.diaries().getDiaryById(noteId)
+        return roomDb.notesDao().getNoteById(noteId)
     }
 
     override fun getAllNotes(): android.arch.paging.DataSource.Factory<Int, Note> {
-        return roomDb.diaries().notesByDate()
+        return roomDb.notesDao().notesByDate()
     }
 
     override fun deleteNoteById(noteId: Long): LiveData<Int> {
@@ -33,7 +33,7 @@ class Repository(private val roomDb: JournalDb,
             override fun onActive() {
                 super.onActive()
                 appExecutors.diskIO().execute {
-                    val affectedRows = roomDb.diaries().deleteNoteById(noteId)
+                    val affectedRows = roomDb.notesDao().deleteNoteById(noteId)
                     postValue(affectedRows)
                 }
             }

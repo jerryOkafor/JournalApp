@@ -15,10 +15,10 @@ import android.arch.persistence.room.*
 interface NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdateDiary(diary: Note)
+    fun insertOrUpdateNote(diary: Note)
 
     @Query("SELECT * FROM notes WHERE id = :id")
-    fun getDiaryById(id: Long): LiveData<Note>
+    fun getNoteById(id: Long): LiveData<Note>
 
     @Query("SELECT * FROM notes ORDER BY createdAt ASC")
     fun notesByDate(): DataSource.Factory<Int, Note>

@@ -60,7 +60,7 @@ class EntriesFragment : Fragment() {
         appCompatActivity.setSupportActionBar(toolbar)
 
         fabCreateDiary.setOnClickListener {
-            //create a new note
+            //getInstance a new note
             navUtil.gotoCreateOrUpdate(requireActivity(), 0L)
         }
 

@@ -111,7 +111,7 @@ class ModifyFragment : Fragment() {
         val newDiary = note?.copy(title = title, content = content, updateAt = Date())
                 ?: Note(diaryId, title, content, Date(), Date())
 
-        //update or create the note
+        //update or getInstance the note
         viewModel.createOrUpdateNote(newDiary)
         showToastMessage(if (diaryId == 0L) "Note added successfully." else "Note Updated successfully")
         Util.closeSoftInputMethod(requireActivity())

@@ -37,7 +37,7 @@ val appModule: Module = applicationContext {
                         .build())
     }
     bean { AppExecutors() }
-    bean { JournalDb.create(androidApplication(), false) }
+    bean { JournalDb.getInstance(androidApplication(), false) }
     bean { Repository(get(), get()) as DataSource }
 
     //viewModels
@@ -50,5 +50,5 @@ val appModule: Module = applicationContext {
  * In - Memory Room database definition for testing
  * */
 val roomTestModule: Module = applicationContext {
-    bean { JournalDb.create(androidApplication(), true) }
+    bean { JournalDb.getInstance(androidApplication(), true) }
 }
