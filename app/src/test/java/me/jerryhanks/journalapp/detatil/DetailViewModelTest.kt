@@ -1,10 +1,14 @@
 package me.jerryhanks.journalapp.detatil
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
 import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.verify
 import me.jerryhanks.journalapp.data.DataSource
+import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.ui.detail.DetailViewModel
+import me.jerryhanks.journalapp.utils.mock
 import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
@@ -12,10 +16,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.koin.standalone.StandAloneContext.startKoin
-import org.koin.standalone.inject
 import org.koin.test.KoinTest
-import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.anyLong
 import org.mockito.Mockito.mock
 import org.mockito.MockitoAnnotations
@@ -57,12 +58,41 @@ class DetailViewModelTest : KoinTest {
         verify(dataSource, never()).getNoteById(anyLong())
     }
 
-//    @Test
-//    fun fetchWenObserved() {
-//        viewModel.setNoteId(1L)
-//
-//        //observe forever
-//        viewModel.getNote().observeForever(mock())
-//    }
+    @Test
+    fun fetchWhenObserved() {
+        viewModel.setNoteId(1L)
+
+        //observe forever
+        viewModel.getNote().observeForever(mock())
+
+        //check that the repo call was triggered
+        verify(dataSource).getNoteById(1L)
+    }
+
+    @Test
+    fun changeWhileObserved() {
+        //start observing
+        viewModel.getNote().observeForever(mock())
+
+        //toggle the note id from 1 to  2
+        viewModel.setNoteId(1L)
+        viewModel.setNoteId(2L)
+
+        //verify that the repository was called for the new note id
+        verify(dataSource).getNoteById(1L)
+        verify(dataSource).getNoteById(2L)
+    }
+
+    @Test
+    fun nullNoteId() {
+        viewModel.setNoteId(null)
+        val noteObserver = mock<Observer<Note>>()
+
+        //observe
+        viewModel.getNote().observeForever(noteObserver)
+
+        //verify that onChange fro null was called
+        verify(noteObserver).onChanged(null)
+    }
 
 }
