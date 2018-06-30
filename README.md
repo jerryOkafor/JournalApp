@@ -1,5 +1,5 @@
 # JournalApp
-A journal application where in users can pen down their thoughts and feelings submitted for the 7 Dya of code challlenge for the ALC learners.
+A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
 
 ## Getting Started
 
@@ -10,45 +10,43 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+Android Studio 3.1.3 or greater.
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Follow this steps if you want get a local copy of the project in your machine.
 
-Say what the step will be
+##### 1. Clone or fork the repository by running the cammand below.
+	
+	```
+	git clone https://github.com/po10cio/JournalApp.git
+	```
 
-```
-Give the example
-```
+#####2. Import the project in AndroidStudio
+1. In Android Studio, go to File -> New -> Import project
+2. Follew the dialog wizard to choose the folder where you cloned the project and click on open.
+3. Androidstudio imports the projects and builds it for you. 
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+You can now run the project in an Android Emulator or a real Android Device.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Journal App comes with both Instrumented tests and Unit tests. 
 
-### Break down into end to end tests
+### Instrumentation tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+To run the instrumentaton tests, you need an Android Emulator or a real Android device. Once you have any of this, open a terminal in AndroidStudio and run the command below.
 
 ```
-Give an example
+./gradlew connectedAndroidTest
+```
+
+### Running Local Unit tests
+You do not need any device (Emulator of real Android device) to run this test. To run this test, open a terminal and run the command shown below.
+
+```
+./gradlew test
 ```
 
 ## Deployment

@@ -40,7 +40,10 @@ android {
             java.srcDirs += 'src/androidTest/kotlin'
             java.srcDirs += SHARED_TEST_DIR
         }
-        debug { java.srcDirs = ['src/debug/java', 'src/debug/java/'] }
+    }
+
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
     }
 
     compileOptions {

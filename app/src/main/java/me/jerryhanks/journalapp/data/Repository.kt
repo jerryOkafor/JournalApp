@@ -4,7 +4,7 @@ import android.arch.lifecycle.LiveData
 import me.jerryhanks.journalapp.AppExecutors
 import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.data.db.JournalDb
-import me.jerryhanks.journalapp.testing.OpenForTesting
+import me.jerryhanks.journalapp.di.OpenForTesting
 
 
 /**

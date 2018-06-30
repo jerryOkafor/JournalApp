@@ -1,4 +1,4 @@
-package me.jerryhanks.journalapp.testing
+package me.jerryhanks.journalapp.di
 
 /**
  * This annotation allows us to open some classes for mocking purposes while they are final in

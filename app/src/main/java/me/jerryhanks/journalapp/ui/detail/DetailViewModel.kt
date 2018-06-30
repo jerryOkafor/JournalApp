@@ -6,7 +6,7 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.db.Note
-import me.jerryhanks.journalapp.testing.OpenForTesting
+import me.jerryhanks.journalapp.di.OpenForTesting
 import me.jerryhanks.journalapp.utils.NullLiveData
 
 
