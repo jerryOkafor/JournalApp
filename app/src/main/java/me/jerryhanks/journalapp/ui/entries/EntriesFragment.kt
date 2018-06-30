@@ -15,7 +15,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_entires.*
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.ui.utils.NavigationUtils
 import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.android.inject
@@ -26,7 +26,7 @@ class EntriesFragment : Fragment() {
     private val navUtil: NavigationUtils by inject()
     private lateinit var notesAdapter: NotesAdapter
     private val notesItemClick = object : NotesAdapter.NotesClickCallback {
-        override fun onItemClicked(diary: Diary) {
+        override fun onItemClicked(diary: Note) {
             Log.d(TAG, "Item selected: $diary")
             navUtil.gotoDetails(requireActivity(), diary.id)
         }

@@ -107,7 +107,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun updateNote() {
-        Log.d(TAG, "Modifying Diary Item")
+        Log.d(TAG, "Modifying Note Item")
         noteId?.let { navUtils.gotoCreateOrUpdate(requireActivity(), it) }
     }
 

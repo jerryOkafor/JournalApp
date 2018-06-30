@@ -11,7 +11,7 @@ import android.view.*
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_modify.*
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.ui.utils.Util
 import me.jerryhanks.journalapp.ui.utils.goBack
 import org.koin.android.architecture.ext.viewModel
@@ -22,7 +22,7 @@ private const val TAG = "CreateOrUpdate"
 
 class ModifyFragment : Fragment() {
     private var diaryId: Long = 0L
-    private var note: Diary? = null
+    private var note: Note? = null
 
     private val viewModel by viewModel<CreateOrUpdateViewModel>()
 
@@ -109,7 +109,7 @@ class ModifyFragment : Fragment() {
         //if we are here, title and content are ot null
         //ns we are ready to go
         val newDiary = note?.copy(title = title, content = content, updateAt = Date())
-                ?: Diary(diaryId, title, content, Date(), Date())
+                ?: Note(diaryId, title, content, Date(), Date())
 
         //update or create the note
         viewModel.createOrUpdateNote(newDiary)

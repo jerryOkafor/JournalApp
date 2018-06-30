@@ -2,7 +2,7 @@ package me.jerryhanks.journalapp.data
 
 import android.arch.lifecycle.LiveData
 import android.arch.paging.DataSource
-import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.data.db.Note
 
 
 /**
@@ -13,11 +13,11 @@ import me.jerryhanks.journalapp.data.db.Diary
 
 interface DataSource {
 
-    fun createOrUpdateNote(note: Diary)
+    fun createOrUpdateNote(note: Note)
 
-    fun getNoteById(noteId: Long): LiveData<Diary>
+    fun getNoteById(noteId: Long): LiveData<Note>
 
-    fun getAllNotes(): DataSource.Factory<Int, Diary>
+    fun getAllNotes(): DataSource.Factory<Int, Note>
 
     fun deleteNoteById(noteId: Long): LiveData<Int>
 

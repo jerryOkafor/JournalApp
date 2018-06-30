@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
 import me.jerryhanks.journalapp.data.DataSource
-import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.data.db.Note
 
 
 /**
@@ -15,7 +15,7 @@ import me.jerryhanks.journalapp.data.db.Diary
  */
 
 class EntriesViewModel(dataSource: DataSource) : ViewModel() {
-    private val notes: LiveData<PagedList<Diary>> = LivePagedListBuilder(dataSource.getAllNotes(),
+    private val notes: LiveData<PagedList<Note>> = LivePagedListBuilder(dataSource.getAllNotes(),
             PagedList.Config.Builder()
                     .setPageSize(DB_PAGE_SIZE)
                     .setInitialLoadSizeHint(DB_INITIAL_LOAD_SIZE)
@@ -24,7 +24,7 @@ class EntriesViewModel(dataSource: DataSource) : ViewModel() {
                     .build())
             .build()
 
-    fun getNotes(): LiveData<PagedList<Diary>> {
+    fun getNotes(): LiveData<PagedList<Note>> {
         return notes
     }
 

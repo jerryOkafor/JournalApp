@@ -12,8 +12,8 @@ import java.util.*
  * @mail jerryhanksokafor@gmail.com
  * @for JournalApp
  */
-@Entity(tableName = "diaries", indices = [(Index(value = ["id"], unique = true))])
-data class Diary(
+@Entity(tableName = "notes", indices = [(Index(value = ["id"], unique = true))])
+data class Note(
         @PrimaryKey(autoGenerate = true)
         val id: Long,
         val title: String,

@@ -12,18 +12,18 @@ import android.arch.persistence.room.*
  */
 
 @Dao
-interface DiaryDao {
+interface NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdateDiary(diary: Diary)
+    fun insertOrUpdateDiary(diary: Note)
 
-    @Query("SELECT * FROM diaries WHERE id = :id")
-    fun getDiaryById(id: Long): LiveData<Diary>
+    @Query("SELECT * FROM notes WHERE id = :id")
+    fun getDiaryById(id: Long): LiveData<Note>
 
-    @Query("SELECT * FROM diaries ORDER BY createdAt ASC")
-    fun diariesByDate(): DataSource.Factory<Int, Diary>
+    @Query("SELECT * FROM notes ORDER BY createdAt ASC")
+    fun notesByDate(): DataSource.Factory<Int, Note>
 
-    @Query("DELETE FROM diaries WHERE id = :noteId")
+    @Query("DELETE FROM notes WHERE id = :noteId")
     fun deleteNoteById(noteId: Long): Int
 
 }

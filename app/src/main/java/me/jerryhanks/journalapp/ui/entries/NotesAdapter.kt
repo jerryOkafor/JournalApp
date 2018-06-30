@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_note.*
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.ui.utils.toFormattedString
 
 
@@ -18,7 +18,7 @@ import me.jerryhanks.journalapp.ui.utils.toFormattedString
  * @mail jerryhanksokafor@gmail.com
  * @for JournalApp
  */
-class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAdapter<Diary, NotesAdapter.NotesViewHolder>(DIFF_CALLBACK) {
+class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAdapter<Note, NotesAdapter.NotesViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         val rootView = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
         return NotesViewHolder(rootView)
@@ -39,12 +39,12 @@ class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAda
     }
 
     interface NotesClickCallback {
-        fun onItemClicked(diary: Diary)
+        fun onItemClicked(diary: Note)
     }
 
     inner class NotesViewHolder(override val containerView: View)
         : RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bindNote(note: Diary) {
+        fun bindNote(note: Note) {
             val context = containerView.context
             tvNoteTitle.text = note.title
             tvNoteContent.text = note.content
@@ -57,12 +57,12 @@ class NotesAdapter(private val clickListener: NotesClickCallback) : PagedListAda
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Diary>() {
-            override fun areItemsTheSame(oldItem: Diary, newItem: Diary): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Note>() {
+            override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Diary, newItem: Diary): Boolean {
+            override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
                 return oldItem == newItem
             }
         }

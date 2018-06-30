@@ -2,7 +2,7 @@ package me.jerryhanks.journalapp.data
 
 import android.arch.lifecycle.LiveData
 import me.jerryhanks.journalapp.AppExecutors
-import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.data.db.JournalDb
 
 
@@ -14,18 +14,18 @@ import me.jerryhanks.journalapp.data.db.JournalDb
 
 class Repository(private val roomDb: JournalDb,
                  private val appExecutors: AppExecutors) : DataSource {
-    override fun createOrUpdateNote(note: Diary) {
+    override fun createOrUpdateNote(note: Note) {
         appExecutors.diskIO().execute {
             roomDb.diaries().insertOrUpdateDiary(note)
         }
     }
 
-    override fun getNoteById(noteId: Long): LiveData<Diary> {
+    override fun getNoteById(noteId: Long): LiveData<Note> {
         return roomDb.diaries().getDiaryById(noteId)
     }
 
-    override fun getAllNotes(): android.arch.paging.DataSource.Factory<Int, Diary> {
-        return roomDb.diaries().diariesByDate()
+    override fun getAllNotes(): android.arch.paging.DataSource.Factory<Int, Note> {
+        return roomDb.diaries().notesByDate()
     }
 
     override fun deleteNoteById(noteId: Long): LiveData<Int> {

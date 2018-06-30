@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import me.jerryhanks.journalapp.data.DataSource
-import me.jerryhanks.journalapp.data.db.Diary
+import me.jerryhanks.journalapp.data.db.Note
 
 
 /**
@@ -31,7 +31,7 @@ class DetailsViewModel(private val dataSource: DataSource) : ViewModel() {
 
     }
 
-    fun getNote(): LiveData<Diary> {
+    fun getNote(): LiveData<Note> {
         return note
     }
 

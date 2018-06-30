@@ -13,11 +13,11 @@ import android.content.Context
  * @for JournalApp
  */
 
-@Database(entities = [(Diary::class)], version = 1, exportSchema = true)
+@Database(entities = [(Note::class)], version = 1, exportSchema = true)
 @TypeConverters(DateConverter::class)
 abstract class JournalDb : RoomDatabase() {
 
-    abstract fun diaries(): DiaryDao
+    abstract fun diaries(): NotesDao
 
     companion object {
         fun create(context: Context, usInMemory: Boolean): JournalDb {
