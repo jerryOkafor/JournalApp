@@ -20,7 +20,7 @@ import org.koin.test.KoinTest
  */
 
 @RunWith(AndroidJUnit4::class)
-class DiaryDaoTest : KoinTest {
+class NotesDaoTest : KoinTest {
     //inject needed component from Koin
     private val journalDb: JournalDb by inject()
 

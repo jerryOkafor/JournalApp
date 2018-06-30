@@ -11,5 +11,5 @@ import org.junit.runners.Suite
  */
 
 @RunWith(Suite::class)
-@Suite.SuiteClasses(ExampleInstrumentedTest::class, DiaryDaoTest::class)
+@Suite.SuiteClasses(ExampleInstrumentedTest::class, NotesDaoTest::class)
 class InstrumentationTestSuite
