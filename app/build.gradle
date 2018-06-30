@@ -30,8 +30,16 @@ android {
     }
 
     sourceSets {
-        test.java.srcDirs += 'src/test/kotlin'
-        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+        final String SHARED_TEST_DIR = 'src/common/java'
+
+        test {
+            java.srcDirs += 'src/test/kotlin'
+            java.srcDirs += SHARED_TEST_DIR
+        }
+        androidTest {
+            java.srcDirs += 'src/androidTest/kotlin'
+            java.srcDirs += SHARED_TEST_DIR
+        }
     }
 
     compileOptions {

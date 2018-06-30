@@ -24,8 +24,6 @@ class DiaryDaoTest : KoinTest {
     //inject needed component from Koin
     private val journalDb: JournalDb by inject()
 
-    constructor()
-
     /**
      * Override default Koin config to use In-Memory database
      * */
