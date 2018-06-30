@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_details.*
-
 import me.jerryhanks.journalapp.R
+import me.jerryhanks.journalapp.ui.utils.NavigationUtils
 import me.jerryhanks.journalapp.ui.utils.goBack
 import me.jerryhanks.journalapp.ui.utils.toFormattedString
 import org.koin.android.architecture.ext.viewModel
+import org.koin.android.ext.android.inject
 
 private const val EXTRA_DIARY_ID = "note_id"
 private const val TAG = "DetailsFragment"
@@ -19,6 +21,7 @@ private const val TAG = "DetailsFragment"
 class DetailsFragment : Fragment() {
 
     private var noteId: Long? = null
+    private val navUtils: NavigationUtils by inject()
     private val detailsViewModel by viewModel<DetailsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +77,10 @@ class DetailsFragment : Fragment() {
                 goBack()
                 true
             }
+            R.id.action_delete_note -> {
+                deleteNote()
+                true
+            }
             R.id.action_modify -> {
                 updateNote()
                 true
@@ -84,9 +91,24 @@ class DetailsFragment : Fragment() {
         }
     }
 
+    private fun deleteNote() {
+        Log.d(TAG, "Deleting note")
+        noteId?.let {
+           detailsViewModel.deleteNote(it)
+                    .observe(this, Observer {
+                        it?.let {
+                            if (it >= 0) {
+                                Toast.makeText(requireContext(), "Note deleted successful.", Toast.LENGTH_LONG).show()
+                                goBack()
+                            }
+                        }
+                    })
+        }
+    }
+
     private fun updateNote() {
         Log.d(TAG, "Modifying Diary Item")
-
+        noteId?.let { navUtils.gotoCreateOrUpdate(requireActivity(), it) }
     }
 
     companion object {

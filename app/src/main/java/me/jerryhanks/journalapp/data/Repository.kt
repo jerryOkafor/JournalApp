@@ -28,4 +28,18 @@ class Repository(private val roomDb: JournalDb,
         return roomDb.diaries().diariesByDate()
     }
 
+    override fun deleteNoteById(noteId: Long): LiveData<Int> {
+        return object : LiveData<Int>() {
+            override fun onActive() {
+                super.onActive()
+                appExecutors.diskIO().execute {
+                    val affectedRows = roomDb.diaries().deleteNoteById(noteId)
+                    postValue(affectedRows)
+                }
+            }
+        }
+
+    }
+
+
 }

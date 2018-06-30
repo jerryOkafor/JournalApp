@@ -23,4 +23,7 @@ interface DiaryDao {
     @Query("SELECT * FROM diaries ORDER BY createdAt ASC")
     fun diariesByDate(): DataSource.Factory<Int, Diary>
 
+    @Query("DELETE FROM diaries WHERE id = :noteId")
+    fun deleteNoteById(noteId: Long): Int
+
 }

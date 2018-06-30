@@ -19,4 +19,6 @@ interface DataSource {
 
     fun getAllNotes(): DataSource.Factory<Int, Diary>
 
+    fun deleteNoteById(noteId: Long): LiveData<Int>
+
 }

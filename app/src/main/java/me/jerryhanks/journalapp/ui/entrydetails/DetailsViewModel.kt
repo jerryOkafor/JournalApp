@@ -35,4 +35,8 @@ class DetailsViewModel(private val dataSource: DataSource) : ViewModel() {
         return note
     }
 
+    fun deleteNote(noteId: Long): LiveData<Int> {
+        return dataSource.deleteNoteById(noteId)
+    }
+
 }

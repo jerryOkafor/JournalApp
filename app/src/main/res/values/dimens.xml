@@ -4,4 +4,5 @@
     <dimen name="dp_32">32dp</dimen>
     <dimen name="dp_150">150dp</dimen>
     <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
 </resources>
