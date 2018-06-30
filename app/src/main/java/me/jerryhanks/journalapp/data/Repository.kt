@@ -25,7 +25,7 @@ class Repository(private val roomDb: JournalDb,
     }
 
     override fun getAllNotes(): android.arch.paging.DataSource.Factory<Int, Note> {
-        return roomDb.notesDao().notesByDate()
+        return roomDb.notesDao().notes()
     }
 
     override fun deleteNoteById(noteId: Long): LiveData<Int> {

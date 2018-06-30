@@ -1,5 +1,6 @@
 package me.jerryhanks.journalapp
 
+import me.jerryhanks.journalapp.data.NotesDaoTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 

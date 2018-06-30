@@ -21,7 +21,7 @@ interface NotesDao {
     fun getNoteById(id: Long): LiveData<Note>
 
     @Query("SELECT * FROM notes ORDER BY createdAt ASC")
-    fun notesByDate(): DataSource.Factory<Int, Note>
+    fun notes(): DataSource.Factory<Int, Note>
 
     @Query("DELETE FROM notes WHERE id = :noteId")
     fun deleteNoteById(noteId: Long): Int
