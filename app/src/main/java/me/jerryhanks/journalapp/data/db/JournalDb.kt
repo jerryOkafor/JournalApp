@@ -26,38 +26,32 @@ abstract class JournalDb : RoomDatabase() {
     companion object {
         private const val APP_DB_NAME = "journalDb"
         @Volatile
-        var INSTANCE: JournalDb? = null
+        private var INSTANCE: JournalDb? = null
 
-        fun getInstance(context: Context, usInMemory: Boolean): JournalDb {
-            val dbBuilder = if (usInMemory) {
-                Room.inMemoryDatabaseBuilder(context, JournalDb::class.java)
-                        .allowMainThreadQueries()
-            } else {
-                Room.databaseBuilder(context, JournalDb::class.java, APP_DB_NAME)
-                        .addCallback(object : Callback() {
-                            override fun onCreate(db: SupportSQLiteDatabase) {
-                                super.onCreate(db)
-                                //prepopulate the room db here
-                                Executors.newSingleThreadExecutor().execute {
-                                    val sampleNote = Note(
-                                            0,
-                                            context.getString(R.string.sample_title),
-                                            context.getString(R.string.sample_note_content),
-                                            Date(),
-                                            Date())
+        fun getInstance(context: Context): JournalDb {
+            val dbBuilder = Room.databaseBuilder(context, JournalDb::class.java, APP_DB_NAME)
+                    .addCallback(object : Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            //prepopulate the room db here
+                            Executors.newSingleThreadExecutor().execute {
+                                val sampleNote = Note(
+                                        0,
+                                        context.getString(R.string.sample_title),
+                                        context.getString(R.string.sample_note_content),
+                                        Date(),
+                                        Date())
 
-                                    getInstance(context, false).notesDao().insertOrUpdateNote(sampleNote)
-                                }
+                                getInstance(context).notesDao().insertOrUpdateNote(sampleNote)
                             }
-                        })
-            }
-            return INSTANCE ?: synchronized(this) {
-                dbBuilder.fallbackToDestructiveMigration()
-                        .build()
-                        .also {
-                            INSTANCE = it
                         }
-            }
+                    }).fallbackToDestructiveMigration()
+
+            return INSTANCE ?: dbBuilder
+                    .build()
+                    .also {
+                        INSTANCE = it
+                    }
 
         }
     }

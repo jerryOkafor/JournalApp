@@ -1,5 +1,6 @@
 package me.jerryhanks.journalapp.di
 
+import android.arch.persistence.room.Room
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import me.jerryhanks.journalapp.AppExecutors
@@ -30,14 +31,14 @@ import org.koin.dsl.module.applicationContext
 val appModule: Module = applicationContext {
     bean { NavigationUtils }
     bean {
-        GoogleSignIn.getClient(androidApplication(),
+        GoogleSignIn.getClient(get(),
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken(androidApplication().getString(R.string.default_web_client_id))
                         .requestEmail()
                         .build())
     }
     bean { AppExecutors() }
-    bean { JournalDb.getInstance(androidApplication(), false) }
+    bean { JournalDb.getInstance(get()) }
     bean { Repository(get(), get()) as DataSource }
 
     //viewModels
@@ -50,5 +51,10 @@ val appModule: Module = applicationContext {
  * In - Memory Room database definition for testing
  * */
 val roomTestModule: Module = applicationContext {
-    bean { JournalDb.getInstance(androidApplication(), true) }
+    bean {
+        // In-Memory database config
+        Room.inMemoryDatabaseBuilder(get(), JournalDb::class.java)
+                .allowMainThreadQueries()
+                .build()
+    }
 }

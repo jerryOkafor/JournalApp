@@ -15,7 +15,7 @@ import android.arch.persistence.room.*
 interface NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdateNote(diary: Note)
+    fun insertOrUpdateNote(diary: Note): Long
 
     @Query("SELECT * FROM notes WHERE id = :id")
     fun getNoteById(id: Long): LiveData<Note>
