@@ -95,6 +95,8 @@ jobs:
         - *android_dependencies
         - *save_gradle_cache
         - *save_gems_cache
+        - *export_gservices_key
+        - *decode_gservices_key
         - run:
             name: Run unit tests
             command: bundle exec fastlane unit_tests
@@ -116,6 +118,8 @@ jobs:
         - *android_dependencies
         - *save_gradle_cache
         - *save_gems_cache
+        - *export_gservices_key
+        - *decode_gservices_key
         - *export_gcloud_key
         - *decode_gcloud_key
         - run:
