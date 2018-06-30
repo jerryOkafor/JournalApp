@@ -6,6 +6,7 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.db.Note
+import me.jerryhanks.journalapp.utils.NullLiveData
 
 
 /**
@@ -18,7 +19,11 @@ class CreateOrUpdateViewModel(private val dataSource: DataSource) : ViewModel() 
     private val noteId = MutableLiveData<Long>()
 
     private val note = Transformations.switchMap(noteId) {
-        return@switchMap dataSource.getNoteById(it)
+        return@switchMap if (it == null) {
+            NullLiveData.create()
+        } else {
+            dataSource.getNoteById(it)
+        }
     }
 
     fun setNoteId(id: Long) {
