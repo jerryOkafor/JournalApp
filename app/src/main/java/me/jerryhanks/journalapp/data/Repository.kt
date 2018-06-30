@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import me.jerryhanks.journalapp.AppExecutors
 import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.data.db.JournalDb
+import me.jerryhanks.journalapp.testing.OpenForTesting
 
 
 /**
@@ -12,8 +13,9 @@ import me.jerryhanks.journalapp.data.db.JournalDb
  * @for JournalApp
  */
 
-class Repository(private val roomDb: JournalDb,
-                 private val appExecutors: AppExecutors) : DataSource {
+@OpenForTesting
+class Repository(val roomDb: JournalDb,
+                 val appExecutors: AppExecutors) : DataSource {
     override fun createOrUpdateNote(note: Note) {
         appExecutors.diskIO().execute {
             roomDb.notesDao().insertOrUpdateNote(note)

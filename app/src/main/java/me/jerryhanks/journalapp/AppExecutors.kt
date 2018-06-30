@@ -16,7 +16,8 @@ import java.util.concurrent.Executors
 /**
  * Provides different threads for the execution of tasks such as diskIO, networkIO and mainThread
  * */
-class AppExecutors(private val diskIO: Executor, private val networkIO: Executor, private val mainThread: Executor) {
+
+open class AppExecutors(private val diskIO: Executor, private val networkIO: Executor, private val mainThread: Executor) {
 
     constructor() : this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3),
             MainThreadExecutor())
