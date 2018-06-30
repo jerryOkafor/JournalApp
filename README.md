@@ -21,7 +21,7 @@ Follow this steps if you want get a local copy of the project in your machine.
 	
 	git clone https://github.com/po10cio/JournalApp.git
 
-#####2. Import the project in AndroidStudio
+##### 2. Import the project in AndroidStudio
 1. In Android Studio, go to File -> New -> Import project
 2. Follew the dialog wizard to choose the folder where you cloned the project and click on open.
 3. Androidstudio imports the projects and builds it for you. 
