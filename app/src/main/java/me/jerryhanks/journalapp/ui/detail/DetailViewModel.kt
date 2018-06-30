@@ -6,6 +6,7 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.db.Note
+import me.jerryhanks.journalapp.testing.OpenForTesting
 
 
 /**
@@ -14,6 +15,7 @@ import me.jerryhanks.journalapp.data.db.Note
  * @for JournalApp
  */
 
+@OpenForTesting
 class DetailViewModel(private val dataSource: DataSource) : ViewModel() {
     private val noteId = MutableLiveData<Long>()
     private val error = MutableLiveData<String>()
@@ -33,6 +35,10 @@ class DetailViewModel(private val dataSource: DataSource) : ViewModel() {
 
     fun getNote(): LiveData<Note> {
         return note
+    }
+
+    fun getError(): LiveData<String> {
+        return error
     }
 
     fun deleteNote(noteId: Long): LiveData<Int> {
