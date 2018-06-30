@@ -1,4 +1,4 @@
-package me.jerryhanks.journalapp.ui.entries
+package me.jerryhanks.journalapp.ui.notes
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel

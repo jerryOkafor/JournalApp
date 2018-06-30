@@ -3,8 +3,8 @@ package me.jerryhanks.journalapp.ui.utils
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import me.jerryhanks.journalapp.R
-import me.jerryhanks.journalapp.ui.entries.EntriesFragment
-import me.jerryhanks.journalapp.ui.entrydetails.DetailsFragment
+import me.jerryhanks.journalapp.ui.notes.EntriesFragment
+import me.jerryhanks.journalapp.ui.detail.DetailsFragment
 import me.jerryhanks.journalapp.ui.createorupdate.ModifyFragment
 import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 
