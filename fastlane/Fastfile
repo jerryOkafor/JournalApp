@@ -1,0 +1,72 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  before_all do |lane, options|
+    @build_type = "Debug"
+    if not options.empty?
+      @build_type = options[:release] ? "Release" : "Debug"
+    end
+  end
+
+  desc "Assemble Build"
+  lane :assemble_build do |options|
+    gradle(
+        task: "assemble",
+        build_type: @build_type)
+  end
+
+  desc "Assemble Test Application"
+  lane :assemble_test_application do |options|
+    gradle(
+        task: "assemble",
+        build_type: "#{@build_type}AndroidTest")
+  end
+
+  desc "Assemble Build and Test Application"
+  lane :assemble do |options|
+    assemble_build options
+    assemble_test_application options
+  end
+
+  desc "Run unit tests"
+  lane :unit_tests do |options|
+    gradle(
+        task: "test",
+        build_type: @build_type)
+  end
+
+  desc "Run instrumentation tests"
+  lane :instrumentation_tests do
+    automated_test_emulator_run(
+      AVD_setup_path: "fastlane/AVD_setup.json",
+      AVD_recreate_new: false,
+      AVD_clean_after: false,
+      gradle_task: "connectedDebugAndroidTest")
+  end
+
+  desc "Run instrumentation tests in Firebase Test Lab"
+  lane :instrumentation_tests_testlab do
+    assemble
+    run_tests_firebase_testlab(
+      project_id: "quizapp-ui",
+      model: "Nexus6P",
+      version: "27",
+      delete_firebase_files: true,
+      gcloud_service_key_file: "client-secret.json")
+  end
+end
