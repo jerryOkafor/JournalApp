@@ -1,6 +1,5 @@
-# Project Title
-
-One Paragraph of project description goes here
+# JournalApp
+A journal application where in users can pen down their thoughts and feelings submitted for the 7 Dya of code challlenge for the ALC learners.
 
 ## Getting Started
 
@@ -85,3 +84,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc
+=======
