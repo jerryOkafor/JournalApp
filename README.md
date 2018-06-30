@@ -19,9 +19,7 @@ Follow this steps if you want get a local copy of the project in your machine.
 
 ##### 1. Clone or fork the repository by running the cammand below.
 	
-	```
 	git clone https://github.com/po10cio/JournalApp.git
-	```
 
 #####2. Import the project in AndroidStudio
 1. In Android Studio, go to File -> New -> Import project
@@ -55,13 +53,14 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Kotlin](https://kotlinlang.org/) - Koltin for JVM
+* [Room Database](https://developer.android.com/topic/libraries/architecture/room) - The Room persistence library for Android.
+* [Koin](https://github.com/InsertKoinIO/koin) - A pragmatic lightweight dependency injection framework for Kotlin
+* [Firebase](https://firebase.google.com/) - For authentication and data persisntence.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -69,7 +68,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Jerry Hanks**
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -79,7 +78,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-=======
+* [PurpleBooth](https://gist.github.com/PurpleBooth) - for the README.md template
+* [Arnaud Giuliani](https://android.jlelse.eu/painless-android-testing-with-room-koin-bb949eefcbee)
