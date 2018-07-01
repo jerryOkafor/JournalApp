@@ -161,5 +161,7 @@ workflows:
        - test_instrumentation:
            requires:
              - test_unit
-       - generate_code_cove_report
-
+       - report_coverage:
+           requires:
+             - test_unit
+             - test_instrumented

@@ -8,6 +8,10 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'jacoco'
 
+jacoco {
+    toolVersion '0.8.1'
+}
+
 
 android {
     compileSdkVersion 28
@@ -52,6 +56,18 @@ android {
 
     lintOptions {
         lintConfig rootProject.file('lint.xml')
+        abortOnError false
+        disable 'MissingTranslation', 'RestrictedApi'
+    }
+
+    testOptions {
+//        execution 'ANDROID_TEST_ORCHESTRATOR'
+        animationsDisabled true
+
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
     }
 
     compileOptions {
@@ -63,6 +79,11 @@ android {
         experimental true
     }
 }
+
+configurations {
+    codacy
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -114,49 +135,97 @@ dependencies {
     androidTestImplementation "org.koin:koin-test:$versions.koin"
 }
 
-jacoco {
-    toolVersion = "0.7.9"
-    reportsDir = file("$buildDir/reports")
+def coverageSourceDirs = [
+        'src/main/java',
+        'src/debug/java',
+        "src/main/kotlin"]
+
+def excludes = [
+        '**/R.class',
+        '**/R$*.class',
+        '**/*Test*.*',
+        'android/**/*.*',
+        '**/*Fragment.*',
+        '**/*Activity.*',
+        '**/*$ViewInjector*.*',
+        '**/*$ViewBinder*.*',
+        '**/BuildConfig.*',
+        '**/Manifest*.*',
+        '**/AutoValue_*.*']
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
-    group = "Reporting"
-    description = "Generate Jacoco coverage reports for Debug build"
+task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+    description = 'Generate JaCoCo coverage reports'
+    group = 'Reporting'
 
     reports {
         xml.enabled = true
         html.enabled = true
     }
 
-    // what to exclude from coverage report
-    // UI, "noise", generated classes, platform classes, etc.
-    def excludes = [
-            '**/R.class',
-            '**/R$*.class',
-            '**/*$ViewInjector*.*',
-            '**/BuildConfig.*',
-            '**/Manifest*.*',
-            '**/*Test*.*',
-            'android/**/*.*',
-            '**/*Fragment.*',
-            '**/*Activity.*'
-    ]
-    // generated classes
-    classDirectories = fileTree(
-            dir: "$buildDir/intermediates/classes/debug",
-            excludes: excludes
-    ) + fileTree(
-            dir: "$buildDir/tmp/kotlin-classes/debug",
-            excludes: excludes
+    classDirectories =
+            fileTree(
+                    dir: 'build/intermediates/classes/debug',
+                    excludes: excludes) + fileTree(
+                    // Kotlin generated classes on Android project (debug build)
+                    dir: "$buildDir/tmp/kotlin-classes/debug",
+                    excludes: excludes)
+
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = fileTree(
+            dir: "$buildDir",
+            include: ['jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec']
     )
 
-    // sources
-    sourceDirectories = files([
-            android.sourceSets.main.java.srcDirs,
-            "src/main/kotlin"
-    ])
-    executionData = files("$buildDir/jacoco/testDebugUnitTest.exec")
+    doFirst {
+        files('build/intermediates/classes/debug').getFiles().each { file ->
+            if (file.name.contains('$$')) {
+                file.renameTo(file.path.replace('$$', '$'))
+            }
+        }
+    }
 }
 
+task uploadCoverageToCodacy(type: JavaExec, dependsOn: jacocoTestReport) {
+    main = "com.codacy.CodacyCoverageReporter"
+    classpath = configurations.codacy
+
+    args = [
+            "report",
+            "-l",
+            "Java",
+            "-r",
+            "${buildDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
+    ]
+}
+
+task(codacyDepsize) << {
+    def size = 0
+
+    configurations.codacy.collect {
+        it.length() / (1024 * 1024)
+    }.each {
+        size += it
+    }
+
+    println "Total dependencies size: ${Math.round(size * 100) / 100} MB"
+
+    configurations.codacy.sort {
+        -it.length()
+    }.each {
+        println "${it.name}: ${Math.round(it.length() / (1024) * 100) / 100} KB"
+    }
+}
+
+task(codacyLocs) << {
+    configurations.codacy.each {
+        String jarName = it
+
+        println jarName
+    }
+}
 
 apply plugin: 'com.google.gms.google-services'
