@@ -11,6 +11,10 @@ import java.util.*
  */
 
 object TestUtils {
+    val DURATION_SHORT = 3
+    val DURATION_MEDIUM = 6
+    val DURATION_LONG = 12
+
     val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val TEST_NOTE_CREATED_DATE = DATE_FORMAT.parse("2018-06-30")
     val TEST_NOTE_UPDATED_DATE = DATE_FORMAT.parse("2018-07-01")
@@ -23,5 +27,14 @@ object TestUtils {
     @JvmStatic
     fun createNote(): Note {
         return Note(TEST_NOTE_ID, TEST_NOTE_TITLE, TEST_NOT_CONTENT, TEST_NOTE_CREATED_DATE, TEST_NOTE_UPDATED_DATE)
+    }
+
+
+    fun sleep(seconds: Int) {
+        try {
+            Thread.sleep((seconds * 1000).toLong())
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
     }
 }
