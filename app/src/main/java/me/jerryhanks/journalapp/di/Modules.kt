@@ -31,7 +31,7 @@ import org.koin.dsl.module.applicationContext
 val appModule: Module = applicationContext {
     bean { NavigationUtils }
     bean {
-        GoogleSignIn.getClient(get(),
+        GoogleSignIn.getClient(androidApplication(),
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken(androidApplication().getString(R.string.default_web_client_id))
                         .requestEmail()
