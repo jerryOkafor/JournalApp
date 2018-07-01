@@ -151,5 +151,5 @@ workflows:
        - test_instrumentation:
            requires:
              - test_unit
-       - enerate_code_cove_report:
+       - generate_code_cove_report:
 

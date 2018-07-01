@@ -6,8 +6,12 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'jacoco-android'
+
+
 android {
     compileSdkVersion 28
+
     defaultConfig {
         applicationId "me.jerryhanks.journalapp"
         minSdkVersion 15
@@ -22,6 +26,7 @@ android {
             }
         }
     }
+
     buildTypes {
         debug {
             testCoverageEnabled true
@@ -105,6 +110,27 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation "org.koin:koin-test:$versions.koin"
+}
+
+jacocoAndroidUnitTestReport {
+    // what to exclude from coverage report
+    // UI, "noise", generated classes, platform classes, etc.
+    excludes = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*Test*.*',
+            'android/**/*.*',
+            '**/*Fragment.*',
+            '**/*Activity.*',
+            '**/AutoValue_*.*',
+            '**/*JavascriptBridge.class']
+
+    csv.enabled false
+    html.enabled true
+    xml.enabled true
 }
 
 apply plugin: 'com.google.gms.google-services'
