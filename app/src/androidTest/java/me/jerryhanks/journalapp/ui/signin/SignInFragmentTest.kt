@@ -28,6 +28,7 @@ import org.junit.runners.MethodSorters
 class SignInFragmentTest : BaseTest<SingleFragmentActivity>(SingleFragmentActivity::class.java) {
 
     lateinit var signInFragment: SignInFragment
+
     @Before
     @CallSuper
     fun init() {
@@ -60,4 +61,9 @@ class SignInFragmentTest : BaseTest<SingleFragmentActivity>(SingleFragmentActivi
         progressbar.check(matches(not(isDisplayed())))
 
     }
+
+//    @Test
+//    fun testSign() {
+//
+//    }
 }

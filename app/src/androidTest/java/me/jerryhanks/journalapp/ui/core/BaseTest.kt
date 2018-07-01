@@ -3,11 +3,15 @@ package me.jerryhanks.journalapp.ui.core
 import android.app.Activity
 import android.support.annotation.CallSuper
 import android.support.test.rule.ActivityTestRule
+import me.jerryhanks.journalapp.di.appModule
 import me.jerryhanks.journalapp.utils.TestUtils
 import org.hamcrest.Matchers
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
+import org.koin.Koin
+import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.test.KoinTest
 import java.io.File
 
 

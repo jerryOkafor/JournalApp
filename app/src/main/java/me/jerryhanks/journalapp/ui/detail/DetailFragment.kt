@@ -9,6 +9,7 @@ import android.view.*
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_details.*
 import me.jerryhanks.journalapp.R
+import me.jerryhanks.journalapp.di.OpenForTesting
 import me.jerryhanks.journalapp.ui.utils.NavigationUtils
 import me.jerryhanks.journalapp.ui.utils.goBack
 import me.jerryhanks.journalapp.ui.utils.toFormattedString
@@ -16,15 +17,16 @@ import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.android.inject
 
 private const val EXTRA_DIARY_ID = "note_id"
-private const val TAG = "DetailsFragment"
+private const val TAG = "DetailFragment"
 
-class DetailsFragment : Fragment() {
+class DetailFragment : Fragment() {
 
     private var noteId: Long? = null
     private val navUtils: NavigationUtils by inject()
     private val detailsViewModel by viewModel<DetailViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override
+    fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             noteId = it.getLong(EXTRA_DIARY_ID)
@@ -94,7 +96,7 @@ class DetailsFragment : Fragment() {
     private fun deleteNote() {
         Log.d(TAG, "Deleting note")
         noteId?.let {
-           detailsViewModel.deleteNote(it)
+            detailsViewModel.deleteNote(it)
                     .observe(this, Observer {
                         it?.let {
                             if (it >= 0) {
@@ -114,7 +116,7 @@ class DetailsFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(noteId: Long) =
-                DetailsFragment().apply {
+                DetailFragment().apply {
                     arguments = Bundle().apply {
                         putLong(EXTRA_DIARY_ID, noteId)
                     }

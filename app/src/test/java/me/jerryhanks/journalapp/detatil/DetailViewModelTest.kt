@@ -1,7 +1,6 @@
 package me.jerryhanks.journalapp.detatil
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
 import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.verify
@@ -9,6 +8,7 @@ import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.db.Note
 import me.jerryhanks.journalapp.ui.detail.DetailViewModel
 import me.jerryhanks.journalapp.utils.mock
+import org.amshove.kluent.mock
 import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
@@ -18,7 +18,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.koin.test.KoinTest
 import org.mockito.Mockito.anyLong
-import org.mockito.Mockito.mock
 import org.mockito.MockitoAnnotations
 
 
@@ -35,7 +34,7 @@ class DetailViewModelTest : KoinTest {
     val rule = InstantTaskExecutorRule()
 
     //mock some stuff
-    private val dataSource = mock(DataSource::class.java)
+    private val dataSource = mock(DataSource::class)
     private val viewModel = DetailViewModel(dataSource)
 
     @Before

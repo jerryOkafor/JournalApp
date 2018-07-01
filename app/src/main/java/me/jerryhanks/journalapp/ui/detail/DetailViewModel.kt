@@ -17,7 +17,7 @@ import me.jerryhanks.journalapp.utils.NullLiveData
  */
 
 @OpenForTesting
-class DetailViewModel(private val dataSource: DataSource) : ViewModel() {
+open class DetailViewModel(private val dataSource: DataSource) : ViewModel() {
     private val noteId = MutableLiveData<Long>()
     private val error = MutableLiveData<String>()
 

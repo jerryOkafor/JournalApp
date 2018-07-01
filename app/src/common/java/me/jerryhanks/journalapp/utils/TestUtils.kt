@@ -1,5 +1,6 @@
 package me.jerryhanks.journalapp.utils
 
+import android.arch.lifecycle.LiveData
 import me.jerryhanks.journalapp.data.db.Note
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,6 +28,16 @@ object TestUtils {
     @JvmStatic
     fun createNote(): Note {
         return Note(TEST_NOTE_ID, TEST_NOTE_TITLE, TEST_NOT_CONTENT, TEST_NOTE_CREATED_DATE, TEST_NOTE_UPDATED_DATE)
+    }
+
+    @JvmStatic
+    fun createLiveNote(): LiveData<Note> {
+        return object : LiveData<Note>() {
+            override fun onActive() {
+                super.onActive()
+                postValue(createNote())
+            }
+        }
     }
 
 

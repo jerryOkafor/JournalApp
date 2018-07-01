@@ -4,7 +4,7 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import me.jerryhanks.journalapp.R
 import me.jerryhanks.journalapp.ui.notes.EntriesFragment
-import me.jerryhanks.journalapp.ui.detail.DetailsFragment
+import me.jerryhanks.journalapp.ui.detail.DetailFragment
 import me.jerryhanks.journalapp.ui.createorupdate.ModifyFragment
 import me.jerryhanks.journalapp.ui.signIn.SignInFragment
 
@@ -46,7 +46,7 @@ object NavigationUtils {
     fun gotoDetails(activity: FragmentActivity, id: Long) {
         val supportFragmentManager = activity.supportFragmentManager
 
-        val detailFragment = DetailsFragment.newInstance(id)
+        val detailFragment = DetailFragment.newInstance(id)
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, detailFragment)
                 .addToBackStack("details")

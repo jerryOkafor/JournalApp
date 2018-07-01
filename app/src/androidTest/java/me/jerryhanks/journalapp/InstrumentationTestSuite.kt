@@ -13,5 +13,8 @@ import org.junit.runners.Suite
  */
 
 @RunWith(Suite::class)
-@Suite.SuiteClasses(ExampleInstrumentedTest::class, NotesDaoTest::class, SignInFragmentTest::class)
+@Suite.SuiteClasses(
+        ExampleInstrumentedTest::class,
+        NotesDaoTest::class,
+        SignInFragmentTest::class)
 class InstrumentationTestSuite

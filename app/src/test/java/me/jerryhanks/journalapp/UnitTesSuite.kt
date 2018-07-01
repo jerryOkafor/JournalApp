@@ -1,6 +1,8 @@
 package me.jerryhanks.journalapp
 
+import me.jerryhanks.journalapp.createorupdate.CreateOrUpdateViewModelTest
 import me.jerryhanks.journalapp.detatil.DetailViewModelTest
+import me.jerryhanks.journalapp.notes.NotesViewModelTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
@@ -12,5 +14,9 @@ import org.junit.runners.Suite
  */
 
 @RunWith(Suite::class)
-@Suite.SuiteClasses(ExampleUnitTest::class, DetailViewModelTest::class)
+@Suite.SuiteClasses(
+        ExampleUnitTest::class,
+        DetailViewModelTest::class,
+        CreateOrUpdateViewModelTest::class,
+        NotesViewModelTest::class)
 class UnitTesSuite

@@ -38,6 +38,8 @@ Follow this steps if you want get a local copy of the project in your machine.
 
 You can now run the project in an Android Emulator or a real Android Device.
 
+Note : A sample debug apk is avaible in the [Here](apk/app-debug.apk) 
+
 ## Running the tests
 
 Journal App comes with both Instrumented tests and Unit tests. 

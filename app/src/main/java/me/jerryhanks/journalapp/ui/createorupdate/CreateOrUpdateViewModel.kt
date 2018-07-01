@@ -6,6 +6,7 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import me.jerryhanks.journalapp.data.DataSource
 import me.jerryhanks.journalapp.data.db.Note
+import me.jerryhanks.journalapp.di.OpenForTesting
 import me.jerryhanks.journalapp.utils.NullLiveData
 
 
@@ -14,6 +15,7 @@ import me.jerryhanks.journalapp.utils.NullLiveData
  * @mail jerryhanksokafor@gmail.com
  * @for JournalApp
  */
+@OpenForTesting
 class CreateOrUpdateViewModel(private val dataSource: DataSource) : ViewModel() {
 
     private val noteId = MutableLiveData<Long>()
@@ -26,7 +28,7 @@ class CreateOrUpdateViewModel(private val dataSource: DataSource) : ViewModel() 
         }
     }
 
-    fun setNoteId(id: Long) {
+    fun setNoteId(id: Long?) {
         if (id == -1L) {
             return
         }
