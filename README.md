@@ -2,6 +2,7 @@
 A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
 
 [![CircleCI](https://circleci.com/gh/po10cio/JournalApp.svg?style=svg)](https://circleci.com/gh/po10cio/JournalApp)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8ceda2e1681c4b8aa9b44c5da15ddb53)](https://www.codacy.com/app/po10cio/JournalApp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=po10cio/JournalApp&amp;utm_campaign=Badge_Grade)
 
 ## Getting Started
 
