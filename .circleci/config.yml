@@ -108,7 +108,7 @@ jobs:
             destination: /test-results/
 
    ## Run instrumentation tests
-    test_instrumentation:
+    test_instrumented:
       <<: *android_config
       steps:
         - checkout
@@ -158,10 +158,10 @@ workflows:
     jobs:
       # Jobs that will run when you push to your repo ...
        - test_unit
-       - test_instrumentation:
+       - test_instrumented:
            requires:
              - test_unit
-       - report_coverage:
+       - generate_code_cove_report:
            requires:
              - test_unit
              - test_instrumented
