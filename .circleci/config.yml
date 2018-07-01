@@ -137,7 +137,17 @@ jobs:
 
     ## Generate codecov report
     generate_code_cove_report:
+      <<: *android_config
       steps:
+        - checkout
+        - *restore_gradle_cache
+        - *restore_gems_cache
+        - *ruby_dependencies
+        - *android_dependencies
+        - *save_gradle_cache
+        - *save_gems_cache
+        - *export_gservices_key
+        - *decode_gservices_key
         - run:
             name: Generate report
             command: bundle exec fastlane generate_code_report
@@ -151,5 +161,5 @@ workflows:
        - test_instrumentation:
            requires:
              - test_unit
-       - generate_code_cove_report:
+       - generate_code_cove_report
 
