@@ -11,7 +11,7 @@ buildscript {
             'mockito'       : '2.19.0',
             'mockito_kotlin': '1.6.0',
             'test'          : '1.0.2',
-            'kluent'        : '1.15'
+            'kluent'        : '1.38'
     ]
     repositories {
         google()

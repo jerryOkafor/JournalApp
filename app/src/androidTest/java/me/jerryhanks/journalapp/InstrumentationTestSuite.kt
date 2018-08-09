@@ -1,6 +1,7 @@
 package me.jerryhanks.journalapp
 
 import me.jerryhanks.journalapp.data.NotesDaoTest
+import me.jerryhanks.journalapp.ui.detail.DetailFragmentTest
 import me.jerryhanks.journalapp.ui.signin.SignInFragmentTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
@@ -16,5 +17,6 @@ import org.junit.runners.Suite
 @Suite.SuiteClasses(
         ExampleInstrumentedTest::class,
         NotesDaoTest::class,
-        SignInFragmentTest::class)
+        SignInFragmentTest::class,
+        DetailFragmentTest::class)
 class InstrumentationTestSuite

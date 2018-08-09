@@ -121,7 +121,7 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit:1.2.50'
     testImplementation "org.mockito:mockito-core:$versions.mockito"
     testImplementation "com.nhaarman:mockito-kotlin:$versions.mockito_kotlin"
-    testImplementation "org.amshove.kluent:kluent:$versions.kluent"
+    testImplementation "org.amshove.kluent:kluent-android:$versions.kluent"
     testImplementation "android.arch.core:core-testing:$versions.lifecycle"
     testImplementation "android.arch.persistence.room:testing:$versions.room"
     testImplementation "android.arch.paging:common:$versions.paging"
@@ -129,6 +129,7 @@ dependencies {
 
     androidTestImplementation "android.arch.core:core-testing:$versions.lifecycle"
     androidTestImplementation "org.mockito:mockito-android:$versions.mockito"
+    androidTestImplementation "org.amshove.kluent:kluent-android:$versions.kluent"
     androidTestImplementation "com.android.support.test:runner:$versions.test"
     androidTestImplementation "com.android.support.test:rules:$versions.test"
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
