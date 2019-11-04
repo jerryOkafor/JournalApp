@@ -1,5 +1,5 @@
 # JournalApp
-A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
+A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challenge for the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
 
 [![CircleCI](https://circleci.com/gh/po10cio/JournalApp.svg?style=svg)](https://circleci.com/gh/po10cio/JournalApp)
 [![codecov](https://codecov.io/gh/po10cio/JournalApp/branch/master/graph/badge.svg)](https://codecov.io/gh/po10cio/JournalApp)
